@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <title>Frontend Mentor | Calculator app</title>
+</head>
+<body>
+  <div class="calc">
+
+    <p class="number">1 2 3</p>
+    <div class="head">
+
+      <p class="title">calc</p>
+      <div>
+       
+        <div class="flex-theme">
+
+          <p>THEME</p>
+          <div class="theme-switch-wrapper">
+            <input type="range" min="0" max="2" value="0" class="slider" id="myRange" >
+          </div>
+          
+        </div>
+
+      </div>
+    </div>
+
+    <div class="screen">
+      <p id="value"></p>
+    </div>
+
+    <div class="keyboard">
+      <button class="btn">7</button>
+      <button class="btn">8</button>
+      <button class="btn">9</button>
+      <button  id="del">DEL</button>
+      <button class="btn">4</button>
+      <button class="btn">5</button>
+      <button class="btn">6</button>
+      <button class="btn" id="plus">+</button>
+      <button class="btn">1</button>
+      <button class="btn">2</button>
+      <button class="btn">3</button>
+      <button class="btn" id="minus">-</button>
+      <button class="btn" id="decimal">.</button>
+      <button class="btn">0</button>
+      <button class="btn" id="divide">/</button>
+      <button class="btn" id="multiply">×</button>
+      <button id="reset">RESET</button>
+      <button class="btn" id="equals">=</button>
+    </div>
+
+  </div>
+
+  <div class="attribution">
+    <p>
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="https://github.com/Kodi-ezike">Kodi Ezike</a>.
+    </p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

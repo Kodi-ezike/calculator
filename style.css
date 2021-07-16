@@ -1,0 +1,266 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Spartan', sans-serif;
+    background-color: var(--bg-color);
+    transition: background-color 1s ease, color 1s ease;
+}
+:root {
+    
+    --font-color: hsl(0, 0%, 100%);
+    --bg-color: hsl(222, 26%, 31%);
+    --num-color: hsl(221, 14%, 31%);
+    --screen-bg-color:hsl(224, 36%, 15%);
+    --button-color:hsl(6, 63%, 50%);
+    --num-bg-color: hsl(30, 25%, 89%);
+    --keypad-bg-color: hsl(223, 31%, 20%);
+    --reset-color: hsl(0, 0%, 100%);
+    --reset-bg-color: hsl(225, 21%, 49%);
+    --equal-color:hsl(30, 25%, 89%);
+    --equal-bg-color:hsl(6, 63%, 50%);
+    --shadow-color:hsl(240, 14%, 88%);
+    --num-hover-color: hsl(0, 0%, 100%);
+    --reset-hover-color: hsl(225, 18%, 58%);
+    --equal-hover-color:hsl(6, 81%, 50%);
+}
+
+[data-theme="light"] {
+    --font-color: hsl(60, 10%, 19%);
+    --bg-color: hsl(0, 0%, 90%);
+    --num-color: hsl(60, 10%, 19%);
+    --screen-bg-color: hsl(0, 0%, 93%);
+    --button-color:hsl(25, 98%, 40%);
+    --num-bg-color: hsl(30, 25%, 89%);
+    --keypad-bg-color: hsl(0, 5%, 81%);
+    --reset-color: hsl(0, 0%, 100%);
+    --reset-bg-color: hsl(185, 42%, 37%);
+    --equal-color:hsl(30, 25%, 89%);
+    --equal-bg-color:hsl(25, 98%, 40%);
+    --shadow-color:hsl(240, 14%, 88%);
+    --num-hover-color: hsl(0, 0%, 100%);
+    --reset-hover-color: hsl(185, 52%, 41%);
+    --equal-hover-color:hsl(25, 91%, 49%);
+}
+
+[data-theme="dark"] {
+    
+    --font-color: hsl(52, 100%, 62%);
+    --bg-color: hsl(268, 75%, 9%);
+    --num-color: hsl(52, 100%, 62%);
+    --screen-bg-color: hsl(268, 71%, 12%);
+    --button-color:hsl(176, 100%, 44%);
+    --num-bg-color: hsl(268, 47%, 21%);
+    --keypad-bg-color: hsl(268, 71%, 12%);
+    --reset-color: hsl(0, 0%, 100%);
+    --reset-bg-color: hsl(281, 89%, 26%);
+    --equal-color:hsl(198, 20%, 13%);
+    --equal-bg-color:hsl(176, 100%, 44%);
+    --shadow-color:hsl(240, 14%, 88%);
+    --num-hover-color: hsl(268, 57%, 34%);
+    --reset-hover-color: hsl(281, 89%, 34%);
+    --equal-hover-color:hsl(176, 94%, 50%);
+}
+
+
+.calc{
+    padding-top: 70px;
+    width: 350px;
+    margin: auto;
+}
+.number{
+    text-align: right;
+    font-size: 10px;
+    word-spacing: 7px;
+    margin: 2px 5px;
+    color: var(--font-color);
+}
+.head{
+    display:  flex;
+    justify-content: space-between;
+
+}
+.title{
+    font-size: 20px;
+    color: var(--font-color);
+}
+.flex-theme{
+    width: 110px;
+    display: flex;
+    justify-content: space-between;
+}
+.flex-theme p{
+    font-size: 10px;
+    line-height:20px ;
+    color: var(--font-color);
+}
+
+
+.slider {
+    -webkit-appearance: none;
+    width: 50px;
+    height: 20px;
+    padding: 0 3px;
+    border-radius: 10px;
+    background: var(--keypad-bg-color);
+    outline: none;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--button-color);
+    cursor: pointer;
+}
+.slider::-webkit-slider-thumb:hover{
+    background-color: var(--equal-hover-color);
+}
+.slider::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--button-color);
+    cursor: pointer;
+}
+.slider::-moz-range-thumb:hover{
+    background-color: var(--equal-hover-color);
+}
+.screen{
+    height: 80px;
+    margin: 15px 0;
+    border-radius: 7px;
+    background-color: var(--screen-bg-color);
+    cursor: pointer;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+#value{
+    font-size: 32px;
+    float: right;
+    line-height: 80px;
+    margin-right: 15px;
+    color: var(--font-color);
+}
+.keyboard{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: var(--keypad-bg-color);
+    padding: 10px;
+    border-radius: 8px;
+
+}
+button{
+    width: 70px;
+    height: 50px;
+    margin: 5px;
+    font-family: 'Spartan', sans-serif;
+    font-size: 24px;
+    text-align: center;
+    border-radius: 7px;
+    outline: none;
+    color: var(--num-color);
+    background-color: var(--num-bg-color);
+    border: 1px solid var(--num-bg-color);
+    cursor: pointer;
+}
+button:hover{
+    background-color: var(--num-hover-color);
+}
+button:active{
+    background-color: var(--num-bg-color);
+}
+#reset,#del{
+    color: var(--reset-color);
+    background-color: var(--reset-bg-color);
+    border: 1px solid var(--reset-bg-color);
+}
+#reset:hover,#del:hover{
+    background-color: var(--reset-hover-color);
+}
+#reset:active, #del:active{
+    background-color: var(--reset-bg-color);
+}
+#equals{
+    color: var(--equal-color);
+    background-color: var(--equal-bg-color);
+    border: 1px solid var(--equal-bg-color);
+}
+#equals:hover{
+    background-color: var(--equal-hover-color);
+}
+#equals:active{
+    background-color: var(--equal-bg-color);
+}
+#reset,#equals{
+    width: 153px;
+}
+#reset,#equals,#del{
+    font-size: 14px;
+}
+
+.attribution { 
+    font-size: 11px; 
+    text-align: center;
+    padding-top: 70px;
+    color: var(--font-color);
+}
+.attribution a { 
+    color: var(--font-color); 
+}
+
+
+
+
+@media screen and (max-width: 400px) {
+    
+.calc{
+    width: 310px;
+}
+.title{
+    font-size: 30px;
+    line-height: 10px;
+}
+#value{
+    margin-right: 13px;
+}
+button{
+    width: 60px;
+    height: 60px;
+}
+#reset,#equals{
+    width: 133px;
+}
+
+
+
+}  
+
+
+@media screen and (max-width: 350px) {
+    
+.calc{
+    width: 290px;
+}
+.title{
+    font-size: 30px;
+    line-height: 10px;
+}
+button{
+    width: 50px;
+    height: 50px;
+    margin-bottom: 15px;
+}
+#reset,#equals{
+    width: 121px;
+    margin-bottom: 5px;
+}
+
+}  
+    
+    
