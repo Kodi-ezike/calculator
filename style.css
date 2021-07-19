@@ -204,11 +204,24 @@ button:active{
     font-size: 14px;
 }
 
-.attribution { 
+/* .attribution { 
     font-size: 11px; 
     text-align: center;
     padding-top: 70px;
     color: var(--font-color);
+} */
+
+.attribution { 
+    font-size: 11px; 
+    padding-top: 70px;
+    color: var(--font-color);
+    display: flex;
+    justify-content: center;
+}
+.attribution p{
+    position: fixed;
+    bottom: 0;
+  
 }
 .attribution a { 
     color: var(--font-color); 
