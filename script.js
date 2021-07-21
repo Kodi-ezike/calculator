@@ -20,6 +20,8 @@ console.log(val);
 
 range.addEventListener('change', switchTheme);
 
+
+
 // // Store the user preference for future visits
 // function switchTheme(e) {
 //     if (val <= 0) {
@@ -37,15 +39,6 @@ range.addEventListener('change', switchTheme);
 // }
 
 
-//for the calculator
-
-// const keys = document.querySelector('.keyboard');
-// function show(){
-//     const keys = document.getElementById('keyboard').innerText;
-//       document.getElementById("value").innerHTML = keys; 
-// }
-// keys.addEventListener('click', show)
-
 let runningTotal = 0;
 let buffer = 0;  //waiting for an input
 let previousOperator = null; // store previous symbols
@@ -57,11 +50,13 @@ document.querySelector('.keyboard').addEventListener('click', function(event){
 })
 
 function buttonClick(value){
-    if(isNaN(parseInt(value))){
+    if(isNaN(parseFloat(value))){
         handleSymbol(value);
     }
+   
     else{
         handleNumber(value);
+       
     }
     rerender();
 }
@@ -73,7 +68,16 @@ function handleNumber(value){
     else{
         buffer += value;            //buffer becomes the value when clicked
     }
-   
+    
+    // else{
+          
+    //     if(typeof value == 'string'){
+    //         buffer = parseInt(value);        //buffer becomes the value when clicked
+    //     }
+    //     else{
+    //         buffer+=value;
+    //     }     
+    // }
 }
 
 function handleSymbol(value){
@@ -85,12 +89,24 @@ function handleSymbol(value){
             break;
         case '=':
             if(previousOperator === null){
-                return;
+                buffer = 0;
+            runningTotal = 0;
+            previousOperator = null;
+                
             }
-            flushOperation(parseInt(buffer));
+            flushOperation(parseFloat(buffer));
             previousOperator = null;
             buffer = '' + runningTotal;
             runningTotal = 0;
+        
+            break;
+        case '.':
+            if (buffer.length >= 1 && !buffer.includes('.')){
+                buffer += '.' ;
+            }
+            // else{
+            //     buffer = 0 + '.' ;  
+            // }
             break;
         case 'DEL':
             if (buffer.length === 1){
@@ -100,15 +116,15 @@ function handleSymbol(value){
                 buffer = buffer.substring(0, buffer.length -1);
             }
             break;
+        
         default:
             handleMath(value);
             break;
     }
-    rerender();
 }
 
 function handleMath(value){
-    const intBuffer = parseInt(buffer);
+    const intBuffer = parseFloat(buffer);
     if(runningTotal === 0){
         runningTotal = intBuffer;
     }
@@ -126,11 +142,13 @@ function flushOperation(intBuffer){
     else if(previousOperator === '-'){
         runningTotal -= intBuffer;
     }
+    
     else if(previousOperator === '×'){
         runningTotal *= intBuffer;
     }
     else if(previousOperator === '/'){
-        runningTotal /= intBuffer;
+       // runningTotal /= intBuffer;
+        runningTotal = (runningTotal/ intBuffer).toFixed(4);
     }
     
 }
@@ -140,9 +158,8 @@ function rerender (){
 }
 
 
+
+
 //refresh after a calculation
 //get decimal to work
 //put 3 decimal place of answer
-
-
-
