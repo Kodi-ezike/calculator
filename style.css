@@ -62,8 +62,8 @@ body{
     --num-hover-color: hsl(268, 57%, 34%);
     --reset-hover-color: hsl(281, 89%, 34%);
     --equal-hover-color:hsl(176, 94%, 50%);
+    
 }
-
 
 .calc{
     padding-top: 70px;
@@ -96,8 +96,6 @@ body{
     line-height:20px ;
     color: var(--font-color);
 }
-
-
 .slider {
     -webkit-appearance: none;
     width: 50px;
@@ -107,7 +105,6 @@ body{
     background: var(--keypad-bg-color);
     outline: none;
 }
-
 .slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
@@ -141,10 +138,10 @@ body{
 }
 #value{
     font-size: 32px;
-    float: right;
+    text-align: right;
     line-height: 80px;
-    margin-right: 15px;
-    color: var(--font-color);
+    padding: 0 15px;
+    color: var(--font-color); 
 }
 .keyboard{
     display: flex;
@@ -153,7 +150,6 @@ body{
     background-color: var(--keypad-bg-color);
     padding: 10px;
     border-radius: 8px;
-
 }
 button{
     width: 70px;
@@ -203,25 +199,12 @@ button:active{
 #reset,#equals,#del{
     font-size: 14px;
 }
-
 .attribution { 
     font-size: 11px; 
     text-align: center;
     padding-top: 70px;
     color: var(--font-color);
 }
-
-/* .attribution { 
-    font-size: 11px; 
-    padding-top: 70px;
-    color: var(--font-color);
-    display: flex;
-    justify-content: center;
-}
-.attribution p{
-    position: fixed;
-    bottom: 0; 
-} */
 .attribution a { 
     color: var(--font-color); 
 }
@@ -248,8 +231,6 @@ button{
 #reset,#equals{
     width: 133px;
 }
-
-
 
 }  
 
