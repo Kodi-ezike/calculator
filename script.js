@@ -21,7 +21,6 @@ console.log(val);
 range.addEventListener('change', switchTheme);
 
 
-
 // // Store the user preference for future visits
 // function switchTheme(e) {
 //     if (val <= 0) {
@@ -38,46 +37,39 @@ range.addEventListener('change', switchTheme);
 //     }
 // }
 
-
 let runningTotal = 0;
 let buffer = 0;  //waiting for an input
 let previousOperator = null; // store previous symbols
+let newCalculation = false;
+let result;
 const screen = document.getElementById('value')
 
 document.querySelector('.keyboard').addEventListener('click', function(event){
     buttonClick(event.target.innerText);
-    console.log(value);
 })
 
 function buttonClick(value){
     if(isNaN(parseFloat(value))){
         handleSymbol(value);
     }
-   
     else{
         handleNumber(value);
-       
     }
     rerender();
 }
 
-function handleNumber(value){
+function handleNumber(value){ 
+    if(newCalculation == true){
+        buffer = value;
+        newCalculation = false;
+        return;
+    }
     if(buffer === 0){
         buffer=value;               //buffer = 0 on default
     }
     else{
         buffer += value;            //buffer becomes the value when clicked
     }
-    
-    // else{
-          
-    //     if(typeof value == 'string'){
-    //         buffer = parseInt(value);        //buffer becomes the value when clicked
-    //     }
-    //     else{
-    //         buffer+=value;
-    //     }     
-    // }
 }
 
 function handleSymbol(value){
@@ -89,24 +81,25 @@ function handleSymbol(value){
             break;
         case '=':
             if(previousOperator === null){
-                buffer = 0;
-            runningTotal = 0;
-            previousOperator = null;
-                
+               return;
             }
+            else{
             flushOperation(parseFloat(buffer));
             previousOperator = null;
-            buffer = '' + runningTotal;
+            buffer = '' + result;
+            newCalculation = true;
             runningTotal = 0;
-        
+            }
             break;
         case '.':
             if (buffer.length >= 1 && !buffer.includes('.')){
                 buffer += '.' ;
             }
-            // else{
-            //     buffer = 0 + '.' ;  
-            // }
+            else {
+                buffer = '0' + value  ;
+                //buffer += value;
+            }
+            
             break;
         case 'DEL':
             if (buffer.length === 1){
@@ -136,30 +129,36 @@ function handleMath(value){
 }
 
 function flushOperation(intBuffer){
+    
     if(previousOperator === '+'){
-        runningTotal += intBuffer;
+      result = runningTotal + intBuffer;
+      if(result.toString().length >= 9){
+        result = result.toFixed(2);
+    }
     }
     else if(previousOperator === '-'){
-        runningTotal -= intBuffer;
+       result = runningTotal - intBuffer;
+       if(result.toString().length >= 9){
+        result = result.toFixed(2);
+    }
     }
     
     else if(previousOperator === '×'){
-        runningTotal *= intBuffer;
+       result= runningTotal * intBuffer;
+       if(result.toString().length >= 9){
+            result = result.toFixed(2);
+        }  
     }
     else if(previousOperator === '/'){
-       // runningTotal /= intBuffer;
-        runningTotal = (runningTotal/ intBuffer).toFixed(4);
+        result = runningTotal / intBuffer;
+        console.log(result.toString().length);      //to find the length of a number
+        //console.log(result.length);               
+        if(result.toString().length >= 9){
+            result = result.toFixed(9);
+        }  
     }
-    
 }
 
 function rerender (){
     screen.innerText = buffer;
 }
-
-
-
-
-//refresh after a calculation
-//get decimal to work
-//put 3 decimal place of answer
