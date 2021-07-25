@@ -42,6 +42,9 @@ function buttonClick(value){
         if(value == '.' && buffer.length ===1){
             buffer ='0' + value;
         }
+        // else{
+        //     buffer += value;
+        // }
     }
     else if(isNaN(parseFloat(value))){
         handleSymbol(value);
@@ -102,7 +105,6 @@ function handleSymbol(value){
                 buffer = buffer.substring(0, buffer.length -1);
             }
             break;
-        
         default:
             handleMath(value);
             break;
