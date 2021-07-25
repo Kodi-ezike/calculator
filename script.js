@@ -21,27 +21,15 @@ console.log(val);
 range.addEventListener('change', switchTheme);
 
 
-// // Store the user preference for future visits
-// function switchTheme(e) {
-//     if (val <= 0) {
-//         document.documentElement.setAttribute('data-theme', 'root');
-//         localStorage.setItem('theme', 'root'); 
-//     }
-//     else if (val <= 1) {
-//         document.documentElement.setAttribute('data-theme', 'light');
-//         localStorage.setItem('theme', 'light'); 
-//     }
-//     else {
-//         document.documentElement.setAttribute('data-theme', 'dark');
-//         localStorage.setItem('theme', 'dark'); 
-//     }
-// }
+
+// calculator js
 
 let runningTotal = 0;
-let buffer = 0;  //waiting for an input
+let buffer = '0';  //waiting for an input
 let previousOperator = null; // store previous symbols
 let newCalculation = false;
 let result;
+
 const screen = document.getElementById('value')
 
 document.querySelector('.keyboard').addEventListener('click', function(event){
@@ -49,7 +37,13 @@ document.querySelector('.keyboard').addEventListener('click', function(event){
 })
 
 function buttonClick(value){
-    if(isNaN(parseFloat(value))){
+    if (value=='.' ){
+        handleNumber(value);
+        if(value == '.' && buffer.length ===1){
+            buffer ='0' + value;
+        }
+    }
+    else if(isNaN(parseFloat(value))){
         handleSymbol(value);
     }
     else{
@@ -59,23 +53,32 @@ function buttonClick(value){
 }
 
 function handleNumber(value){ 
+
     if(newCalculation == true){
         buffer = value;
         newCalculation = false;
+        console.log('here1');
         return;
     }
-    if(buffer === 0){
-        buffer=value;               //buffer = 0 on default
+    if (value == '.' && buffer.includes('.')){
+        console.log('here2');
+        return ;
+    }
+    if(buffer == '0'){
+        buffer=value; 
+        console.log('here3');
+        return;              //buffer = 0 on default
     }
     else{
         buffer += value;            //buffer becomes the value when clicked
+        console.log('buffer');
     }
 }
 
 function handleSymbol(value){
     switch(value){
         case 'RESET':
-            buffer = 0;
+            buffer = '0';
             runningTotal = 0;
             previousOperator = null;
             break;
@@ -91,19 +94,9 @@ function handleSymbol(value){
             runningTotal = 0;
             }
             break;
-        case '.':
-            if (buffer.length >= 1 && !buffer.includes('.')){
-                buffer += '.' ;
-            }
-            else {
-                buffer = '0' + value  ;
-                //buffer += value;
-            }
-            
-            break;
         case 'DEL':
             if (buffer.length === 1){
-                buffer = 0;
+                buffer = '0';
             }
             else{
                 buffer = buffer.substring(0, buffer.length -1);
@@ -125,22 +118,22 @@ function handleMath(value){
         flushOperation(intBuffer);
     }
     previousOperator = value;
-    buffer = 0;
+    buffer = '0';
 }
 
 function flushOperation(intBuffer){
     
     if(previousOperator === '+'){
       result = runningTotal + intBuffer;
-      if(result.toString().length >= 9){
-        result = result.toFixed(2);
-    }
+        if(result.toString().length >= 9){
+            result = result.toFixed(2);
+        }
     }
     else if(previousOperator === '-'){
        result = runningTotal - intBuffer;
-       if(result.toString().length >= 9){
-        result = result.toFixed(2);
-    }
+        if(result.toString().length >= 9){
+            result = result.toFixed(2);
+        }
     }
     
     else if(previousOperator === '×'){
