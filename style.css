@@ -168,7 +168,7 @@ button{
 button:hover{
     background-color: var(--num-hover-color);
 }
-button:active{
+button:focus{
     background-color: var(--num-bg-color);
 }
 #reset,#del{
@@ -179,7 +179,7 @@ button:active{
 #reset:hover,#del:hover{
     background-color: var(--reset-hover-color);
 }
-#reset:active, #del:active{
+#reset:focus, #del:focus{
     background-color: var(--reset-bg-color);
 }
 #equals{
@@ -190,7 +190,7 @@ button:active{
 #equals:hover{
     background-color: var(--equal-hover-color);
 }
-#equals:active{
+#equals:focus{
     background-color: var(--equal-bg-color);
 }
 #reset,#equals{
