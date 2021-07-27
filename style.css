@@ -25,6 +25,9 @@ body{
     --num-hover-color: hsl(0, 0%, 100%);
     --reset-hover-color: hsl(225, 18%, 58%);
     --equal-hover-color:hsl(6, 81%, 50%);
+    --num-shadow-color: hsl(28, 16%, 65%);
+    --reset-shadow-color:hsl(224, 28%, 35%);
+    --equal-shadow-color:hsl(6, 70%, 34%);
 }
 
 [data-theme="light"] {
@@ -43,6 +46,9 @@ body{
     --num-hover-color: hsl(0, 0%, 100%);
     --reset-hover-color: hsl(185, 52%, 41%);
     --equal-hover-color:hsl(25, 91%, 49%);
+    --num-shadow-color: hsl(35, 11%, 61%);
+    --reset-shadow-color:hsl(185, 58%, 25%);
+    --equal-shadow-color:hsl(25, 99%, 27%);
 }
 
 [data-theme="dark"] {
@@ -59,10 +65,12 @@ body{
     --equal-color:hsl(198, 20%, 13%);
     --equal-bg-color:hsl(176, 100%, 44%);
     --shadow-color:hsl(240, 14%, 88%);
-    --num-hover-color: hsl(268, 57%, 34%);
-    --reset-hover-color: hsl(281, 89%, 34%);
+    --num-hover-color: hsl(268, 63%, 28%);
+    --reset-hover-color: rgb(126, 27, 172);
     --equal-hover-color:hsl(176, 94%, 50%);
-    
+    --num-shadow-color: hsl(290, 70%, 36%);
+    --reset-shadow-color:hsl(285, 91%, 52%);
+    --equal-shadow-color:hsl(177, 92%, 70%);
 }
 
 .calc{
@@ -153,8 +161,8 @@ body{
 }
 button{
     width: 70px;
-    height: 50px;
-    margin: 5px;
+    height: 45px;
+    margin: 7px 5px;
     font-family: 'Spartan', sans-serif;
     font-size: 24px;
     text-align: center;
@@ -164,6 +172,7 @@ button{
     background-color: var(--num-bg-color);
     border: 1px solid var(--num-bg-color);
     cursor: pointer;
+    box-shadow: 0 4px 0 var(--num-shadow-color)
 }
 button:hover{
     background-color: var(--num-hover-color);
@@ -175,6 +184,7 @@ button:focus{
     color: var(--reset-color);
     background-color: var(--reset-bg-color);
     border: 1px solid var(--reset-bg-color);
+    box-shadow: 0 4px 0 var(--reset-shadow-color)
 }
 #reset:hover,#del:hover{
     background-color: var(--reset-hover-color);
@@ -186,6 +196,7 @@ button:focus{
     color: var(--equal-color);
     background-color: var(--equal-bg-color);
     border: 1px solid var(--equal-bg-color);
+    box-shadow: 0 4px 0 var(--equal-shadow-color)
 }
 #equals:hover{
     background-color: var(--equal-hover-color);
@@ -195,6 +206,7 @@ button:focus{
 }
 #reset,#equals{
     width: 153px;
+    margin-bottom: 12px;
 }
 #reset,#equals,#del{
     font-size: 14px;
@@ -208,8 +220,6 @@ button:focus{
 .attribution a { 
     color: var(--font-color); 
 }
-
-
 
 
 @media screen and (max-width: 400px) {
